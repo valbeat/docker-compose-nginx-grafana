@@ -1,0 +1,23 @@
+version: '3'
+services:
+  nginx:
+    image: openresty/openresty:alpine
+    container_name: nginx
+    volumes:
+      - ./nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
+      - ./nginx/metrics.vhost:/usr/local/openresty/nginx/conf/metrics.vhost
+      - ./nginx/prometheus.lua:/usr/local/openresty/luajit/lib/prometheus.lua
+    ports:
+      - 8080:80
+  prometheus:
+    image: prom/prometheus:v2.2.0
+    container_name: prometheus
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - 9090:9090
+  grafana:
+    image: grafana/grafana:5.1.2
+    container_name: grafana
+    ports:
+      - 3000:3000
