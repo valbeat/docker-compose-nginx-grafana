@@ -1,11 +1,10 @@
 docker-compose for grafana nginx metrics with lua module
 ---
 
-Docker image which provides an NGINX based on OpenResty (alpine) and Prometheus lua metrics included.
+Docker image which provides an NGINX based on alpine and Prometheus lua metrics included.
 - https://nginx.org
-- https://openresty.org
+- https://cloud.docker.com/repository/docker/valbeat/nginx
 - https://github.com/knyar/nginx-lua-prometheus
-
 
 ```
 1. exec `docker-compose up -d`
