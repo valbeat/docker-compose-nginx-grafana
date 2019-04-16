@@ -1,14 +1,14 @@
 version: '3'
 services:
   nginx:
-    image: openresty/openresty:alpine
+    image: valbeat/nginx:lua-module
     container_name: nginx
     volumes:
-      - ./nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
-      - ./nginx/metrics.vhost:/usr/local/openresty/nginx/conf/metrics.vhost
-      - ./nginx/prometheus.lua:/usr/local/openresty/luajit/lib/prometheus.lua
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/prometheus.lua:/etc/nginx/prometheus.lua
     ports:
       - 8080:80
+
   prometheus:
     image: prom/prometheus:v2.2.0
     container_name: prometheus
